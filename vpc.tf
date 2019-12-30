@@ -10,22 +10,10 @@ resource "aws_vpc" "dev" {
     Name = "dev"
   }
   
- variable "public_subnet_cidr" {
-    description = "CIDR for the Public Subnet"
-    default = "10.0.0.0/16"
-  }
-}
-variable "private_subnet_cidr" {
-    description = "CIDR for the Public Subnet"
-    default = "10.0.1.0/16"
-
-}
-  
-variable "private_subnet_cidr" {
-    description = "CIDR for the Public Subnet"
-    default = "10.0.2.0/16"
-
-}
+ resource “aws_subnet” “dev-subnet-public-1” {
+    vpc_id = “${aws_vpc.dev.id}”
+    cidr_block = “10.0.1.0/16”
+    map_public_ip_on_launch = “true” 
   
 }
 resource "aws_vpc" "qa" {
@@ -37,22 +25,6 @@ resource "aws_vpc" "qa" {
   }
 }
 
- variable "public_subnet_cidr" {
-    description = "CIDR for the Public Subnet"
-    default = "10.0.0.0/18"
-   
- variable "private_subnet_cidr" {
-    description = "CIDR for the Public Subnet"
-    default = "10.0.1.0/18
-
-}
-  
- variable "private_subnet_cidr" {
-    description = "CIDR for the Public Subnet"
-    default = "10.0.2.0/18"
-
-  }
-}
   resource "aws_vpc" "prd" {
   cidr_block       = "10.0.0.0/24"
   instance_tenancy = "dedicated"
@@ -60,20 +32,4 @@ resource "aws_vpc" "qa" {
   tags = {
     Name = "prd"
   }
-}
-
-   variable "public_subnet_cidr" {
-    description = "CIDR for the Public Subnet"
-    default = "10.0.0.0/24"
-  
-  variable "private_subnet_cidr" {
-    description = "CIDR for the Public Subnet"
-    default = "10.0.1.0/24"
-
-}
-  
-  variable "private_subnet_cidr" {
-    description = "CIDR for the Public Subnet"
-    default = "10.0.2.0/24"
-
 }
