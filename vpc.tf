@@ -1,10 +1,7 @@
 provider "aws" {
-  access_key = "access_key"
-  secret_key = "secret_key"
-
-  version = "~> 2.0"
   region  = "us-east-1"
 }
+
 resource "aws_vpc" "dev" {
   cidr_block       = "10.0.0.0/16"
   instance_tenancy = "dedicated"
