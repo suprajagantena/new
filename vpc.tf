@@ -10,16 +10,7 @@ resource "aws_vpc" "dev" {
     Name = "dev"
   }
   
-  resource "aws_subnet" "main" {
-  vpc_id     = "${aws_vpc.main.id}"
-  cidr_block = "10.0.1.0/24"
-
-  tags = {
-    Name = "Main"
-  }
-}
-  
-  resource "aws_subnet" "dev" {
+  resource "aws_subnet" "dev-pub" {
   vpc_id     = "${aws_vpc.dev.id}"
   cidr_block = "10.0.1.0/16"
 
@@ -27,21 +18,21 @@ resource "aws_vpc" "dev" {
     Name = "dev-pub"
   }
 }
-  resource "aws_subnet" "dev" {
+  resource "aws_subnet" "dev-pri-1" {
   vpc_id     = "${aws_vpc.dev.id}"
   cidr_block = "10.0.2.0/16"
 
   tags = {
-    Name = "dev-pri1"
+    Name = "dev-pri-1"
   }
 }
   
-  resource "aws_subnet" "dev" {
+  resource "aws_subnet" "dev-pri-2" {
   vpc_id     = "${aws_vpc.dev.id}"
   cidr_block = "10.0.3.0/16"
 
   tags = {
-    Name = "dev-pri2"
+    Name = "dev-pri-2"
   }
 }
   
@@ -55,7 +46,7 @@ resource "aws_vpc" "qa" {
   }
 }
 
- resource "aws_subnet" "qa" {
+ resource "aws_subnet" "qa-pub" {
   vpc_id     = "${aws_vpc.qa.id}"
   cidr_block = "10.0.1.0/18"
 
@@ -63,21 +54,21 @@ resource "aws_vpc" "qa" {
     Name = "qa-pub"
   }
 }
-  resource "aws_subnet" "qa" {
+  resource "aws_subnet" "qa-pri-1" {
   vpc_id     = "${aws_vpc.qa.id}"
   cidr_block = "10.0.2.0/18"
 
   tags = {
-    Name = "qa-pri1"
+    Name = "qa-pri-1"
   }
 }
   
-  resource "aws_subnet" "qa" {
+  resource "aws_subnet" "qa-pri-2" {
   vpc_id     = "${aws_vpc.qa.id}"
   cidr_block = "10.0.3.0/18"
 
   tags = {
-    Name = "qa-pri2"
+    Name = "qa-pri-2"
   }
 }
 resource "aws_vpc" "prd" {
@@ -97,20 +88,20 @@ resource "aws_vpc" "prd" {
     Name = "prd-pub"
   }
 }
-  resource "aws_subnet" "prd-pri1" {
+  resource "aws_subnet" "prd-pri-1" {
   vpc_id     = "${aws_vpc.prd.id}"
   cidr_block = "10.0.2.0/24"
 
   tags = {
-    Name = "prd-pri1"
+    Name = "prd-pri-1"
   }
 }
   
-  resource "aws_subnet" "prd-pri2" {
+  resource "aws_subnet" "prd-pri-2" {
   vpc_id     = "${aws_vpc.prd.id}"
   cidr_block = "10.0.3.0/24"
 
   tags = {
-    Name = "prd-pri2"
+    Name = "prd-pri-2"
   }
 }
