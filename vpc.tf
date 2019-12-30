@@ -10,12 +10,9 @@ resource "aws_vpc" "dev" {
     Name = "dev"
   }
   
- resource "aws_subnet" "dev" {
-  vpc_id     = "${aws_vpc.dev.id}"
-  cidr_block = "default"
-
-  tags = {
-    Name = "dev-pub"
+ variable "public_subnet_cidr" {
+    description = "CIDR for the Public Subnet"
+    default = ""
   }
 }
   resource "aws_subnet" "dev" {
