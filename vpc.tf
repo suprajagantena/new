@@ -10,10 +10,10 @@ resource "aws_vpc" "dev" {
     Name = "dev"
   }
   
- resource “aws_subnet” “dev-subnet-public-1” {
-    vpc_id = “${aws_vpc.dev.id}”
-    cidr_block = “10.0.1.0/16”
-    map_public_ip_on_launch = “true” 
+ resource "aws_subnet" "dev-subnet-public-1" {
+    vpc_id = "${aws_vpc.dev.id}"
+    cidr_block = "10.0.1.0/16"
+    map_public_ip_on_launch = "true" 
   
 }
 resource "aws_vpc" "qa" {
