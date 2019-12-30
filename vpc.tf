@@ -10,7 +10,16 @@ resource "aws_vpc" "dev" {
     Name = "dev"
   }
   
-  resource "aws_subnet" "dev-pub" {
+  resource "aws_subnet" "main" {
+  vpc_id     = "${aws_vpc.main.id}"
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "Main"
+  }
+}
+  
+  resource "aws_subnet" "dev" {
   vpc_id     = "${aws_vpc.dev.id}"
   cidr_block = "10.0.1.0/16"
 
@@ -18,7 +27,7 @@ resource "aws_vpc" "dev" {
     Name = "dev-pub"
   }
 }
-  resource "aws_subnet" "dev-pri1" {
+  resource "aws_subnet" "dev" {
   vpc_id     = "${aws_vpc.dev.id}"
   cidr_block = "10.0.2.0/16"
 
@@ -27,7 +36,7 @@ resource "aws_vpc" "dev" {
   }
 }
   
-  resource "aws_subnet" "dev-pri2" {
+  resource "aws_subnet" "dev" {
   vpc_id     = "${aws_vpc.dev.id}"
   cidr_block = "10.0.3.0/16"
 
@@ -46,7 +55,7 @@ resource "aws_vpc" "qa" {
   }
 }
 
- resource "aws_subnet" "qa-pub" {
+ resource "aws_subnet" "qa" {
   vpc_id     = "${aws_vpc.qa.id}"
   cidr_block = "10.0.1.0/18"
 
@@ -54,7 +63,7 @@ resource "aws_vpc" "qa" {
     Name = "qa-pub"
   }
 }
-  resource "aws_subnet" "dev-pri1" {
+  resource "aws_subnet" "qa" {
   vpc_id     = "${aws_vpc.qa.id}"
   cidr_block = "10.0.2.0/18"
 
@@ -63,9 +72,9 @@ resource "aws_vpc" "qa" {
   }
 }
   
-  resource "aws_subnet" "dev-pri2" {
+  resource "aws_subnet" "qa" {
   vpc_id     = "${aws_vpc.qa.id}"
-  cidr_block = "10.0.3.0/16"
+  cidr_block = "10.0.3.0/18"
 
   tags = {
     Name = "qa-pri2"
