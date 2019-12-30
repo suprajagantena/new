@@ -10,26 +10,26 @@ resource "aws_vpc" "dev" {
     Name = "dev"
   }
   
- variable "aws_subnet" "dev" {
+ resource "aws_subnet" "dev" {
   vpc_id     = "${aws_vpc.dev.id}"
-  cidr_block = "10.0.1.0/16"
+  cidr_block = "default"
 
   tags = {
     Name = "dev-pub"
   }
 }
-  variable "aws_subnet" "dev" {
+  resource "aws_subnet" "dev" {
   vpc_id     = "${aws_vpc.dev.id}"
-  cidr_block = "10.0.2.0/16"
+  cidr_block = "default"
 
   tags = {
     Name = "dev-pri-1"
   }
 }
   
-  variable "aws_subnet" "dev" {
+ resource "aws_subnet" "dev" {
   vpc_id     = "${aws_vpc.dev.id}"
-  cidr_block = "10.0.3.0/16"
+  cidr_block = "default"
 
   tags = {
     Name = "dev-pri-2"
