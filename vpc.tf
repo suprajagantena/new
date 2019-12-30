@@ -10,7 +10,7 @@ resource "aws_vpc" "dev" {
     Name = "dev"
   }
   
-  data "aws_subnet" "dev" {
+ variable "aws_subnet" "dev" {
   vpc_id     = "${aws_vpc.dev.id}"
   cidr_block = "10.0.1.0/16"
 
@@ -18,7 +18,7 @@ resource "aws_vpc" "dev" {
     Name = "dev-pub"
   }
 }
-  data "aws_subnet" "dev" {
+  variable "aws_subnet" "dev" {
   vpc_id     = "${aws_vpc.dev.id}"
   cidr_block = "10.0.2.0/16"
 
@@ -27,7 +27,7 @@ resource "aws_vpc" "dev" {
   }
 }
   
-  data "aws_subnet" "dev" {
+  variable "aws_subnet" "dev" {
   vpc_id     = "${aws_vpc.dev.id}"
   cidr_block = "10.0.3.0/16"
 
