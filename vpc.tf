@@ -22,6 +22,13 @@ resource "aws_vpc" "qa" {
   }
 }
 
+resource "aws_subnet" "qa-subnet-public-1" {
+    vpc_id = "aws_vpc.qa.id"
+    cidr_block = "10.0.1.0/18"
+    map_public_ip_on_launch = "true" 
+  
+}
+
   resource "aws_vpc" "prd" {
   cidr_block       = "10.0.0.0/24"
   instance_tenancy = "dedicated"
@@ -29,4 +36,10 @@ resource "aws_vpc" "qa" {
   tags = {
     Name = "prd"
   }
+}
+resource "aws_subnet" "prd-subnet-public-1" {
+    vpc_id = "aws_vpc.prd.id"
+    cidr_block = "10.0.1.0/24"
+    map_public_ip_on_launch = "true" 
+  
 }
