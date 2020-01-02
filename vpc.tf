@@ -17,7 +17,7 @@ resource "aws_vpc" "dev" {
 resource "aws_instance" "web" {
   ami           = "ami-00068cd7555f543d5"
   instance_type = "t2.micro"
-  subnet = "aws_subnet.dev-subnet-public-1.id"
+  subnet_id = "aws_subnet.dev-subnet-public-1.id"
   tags = {
     Name = "instance_dev_pub"
   }
