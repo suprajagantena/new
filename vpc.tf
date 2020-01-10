@@ -12,6 +12,9 @@ resource "aws_vpc" "dev" {
     cidr_block = "10.0.1.0/16"
     map_public_ip_on_launch = "true" 
    depends_on = [aws_vpc.dev.id]
+   tags = {
+    Name = "dev-pub"
+  }
   
 }
 
@@ -30,6 +33,9 @@ resource "aws_subnet" "dev-subnet-private-1" {
     cidr_block = "10.0.2.0/16"
     map_public_ip_on_launch = "true" 
   depends_on = [aws_vpc.dev.id]
+  tags = {
+    Name = "dev-pri1"
+  }
   
 }
 
@@ -38,6 +44,9 @@ resource "aws_subnet" "dev-subnet-private-2" {
     cidr_block = "10.0.3.0/16"
     map_public_ip_on_launch = "true" 
   depends_on = [aws_vpc.dev.id]
+    tags = {
+    Name = "dev-pri2"
+  }
   
 }
 
@@ -55,6 +64,9 @@ resource "aws_subnet" "qa-subnet-public-1" {
     cidr_block = "10.0.1.0/18"
     map_public_ip_on_launch = "true" 
   depends_on = [aws_vpc.qa.id]
+    tags = {
+    Name = "qa-pub"
+  }
   
 }
 
@@ -63,6 +75,9 @@ resource "aws_subnet" "qa-subnet-private-1" {
     cidr_block = "10.0.2.0/18"
     map_public_ip_on_launch = "true" 
     depends_on = [aws_vpc.qa.id]
+   tags = {
+    Name = "qa-pri1"
+  }
   
 }
 
@@ -71,6 +86,9 @@ resource "aws_subnet" "qa-subnet-private-2" {
     cidr_block = "10.0.3.0/18"
     map_public_ip_on_launch = "true" 
     depends_on = [aws_vpc.qa.id]
+   tags = {
+    Name = "qa-pri2"
+  }
   
 }
 
@@ -87,6 +105,9 @@ resource "aws_subnet" "prd-subnet-public-1" {
     cidr_block = "10.0.1.0/24"
     map_public_ip_on_launch = "true" 
     depends_on = [aws_vpc.prd.id]
+   tags = {
+    Name = "prd-pub"
+  }
   
 }
 
@@ -95,6 +116,9 @@ resource "aws_subnet" "prd-subnet-private-1" {
     cidr_block = "10.0.2.0/24"
     map_public_ip_on_launch = "true" 
    depends_on = [aws_vpc.prd.id]
+   tags = {
+    Name = "prd-pri1"
+  }
   
 }
 
@@ -103,5 +127,8 @@ resource "aws_subnet" "prd-subnet-private-2" {
     cidr_block = "10.0.3.0/24"
     map_public_ip_on_launch = "true" 
    depends_on = [aws_vpc.prd.id]
+   tags = {
+    Name = "prd-pri2"
+  }
   
 }
