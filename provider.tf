@@ -5,5 +5,5 @@ provider "aws" {
    # role_arn     = "arn:aws:iam::546366803473:role/jenkins"
    # session_name = "TERRAFORM"
    # external_id  = "EXTERNAL_ID"
-  }
+  #}
 }
