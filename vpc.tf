@@ -8,7 +8,7 @@ resource "aws_vpc" "dev" {
   }
   
  resource "aws_subnet" "dev-subnet-public-1" {
-    vpc_id = "aws_vpc.dev.id"
+    vpc_id = ${"aws_vpc.dev.id"}
     cidr_block = "10.0.1.0/16"
     map_public_ip_on_launch = "true" 
    depends_on = [aws_vpc.dev]
@@ -17,6 +17,7 @@ resource "aws_vpc" "dev" {
   }
   
 }
+
 
 resource "aws_instance" "web" {
   ami           = "ami-00068cd7555f543d5"
@@ -29,7 +30,7 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_subnet" "dev-subnet-private-1" {
-    vpc_id = "aws_vpc.dev.id"
+    vpc_id = ${"aws_vpc.dev.id"}
     cidr_block = "10.0.2.0/16"
     map_public_ip_on_launch = "true" 
   depends_on = [aws_vpc.dev]
@@ -40,7 +41,7 @@ resource "aws_subnet" "dev-subnet-private-1" {
 }
 
 resource "aws_subnet" "dev-subnet-private-2" {
-    vpc_id = "aws_vpc.dev.id"
+    vpc_id = ${"aws_vpc.dev.id"}
     cidr_block = "10.0.3.0/16"
     map_public_ip_on_launch = "true" 
   depends_on = [aws_vpc.dev]
